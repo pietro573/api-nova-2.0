@@ -25,10 +25,10 @@ DROP TABLE IF EXISTS `cliente`;
 CREATE TABLE `cliente` (
   `id` int NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `cpf` char(14) DEFAULT NULL,
+  `cpf` char(14) NOT NULL,
   `email` varchar(200) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `celular` char(11) DEFAULT NULL,
+  `celular` char(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`),
   UNIQUE KEY `cpf` (`cpf`)
