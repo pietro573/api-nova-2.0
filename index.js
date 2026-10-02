@@ -144,6 +144,25 @@ app.delete("/cliente/:id", async (req, res) => {
     }
 })
 
+app.delete("/cliente/:perfil", async (req, res) => {
+    try {
+        const { id } = req.params
+
+        const resultado = await db.pool.query(
+            `DELETE FROM perfil WHERE id = ?`,
+            [id]
+        )
+
+        if (resultado[0].affectedRows === 0) {
+            return res.status(404).json({ mensagem: "Perfil não encontrado" })
+        }
+
+        res.status(200).json({ mensagem: "Perfil removido" })
+    } catch (error) {
+        res.status(500).json({ erro: error.message })
+    }
+})
+
 app.post("/login", async (req,res) => {
     try{
         const user = req.body
